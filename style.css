@@ -1,0 +1,687 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family: "Poppins", sans-serif;
+  background: #17170f;
+  color: #fff8df;
+  overflow-x: hidden;
+}
+
+
+/* -------------------------
+   BACKGROUND
+------------------------- */
+
+body::before {
+  content: "";
+  position: fixed;
+  inset: 0;
+  z-index: -2;
+
+  background:
+    radial-gradient(circle at 15% 20%, rgba(255, 202, 59, 0.12), transparent 25%),
+    radial-gradient(circle at 85% 70%, rgba(255, 180, 50, 0.1), transparent 25%),
+    linear-gradient(135deg, #19190f, #282515, #17170f);
+}
+
+body::after {
+  content: "";
+  position: fixed;
+  inset: 0;
+  z-index: -1;
+  pointer-events: none;
+
+  background-image:
+    radial-gradient(#fff 1px, transparent 1px);
+
+  background-size: 45px 45px;
+  opacity: 0.035;
+}
+
+
+/* -------------------------
+   START SCREEN
+------------------------- */
+
+.screen {
+  min-height: 100vh;
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+
+  text-align: center;
+  padding: 30px;
+}
+
+.start-screen {
+  animation: fadeIn 1.5s ease;
+}
+
+.cat {
+  font-size: 85px;
+  margin-bottom: 10px;
+
+  animation: floatCat 3s ease-in-out infinite;
+}
+
+.small-title {
+  font-size: 15px;
+  letter-spacing: 4px;
+  text-transform: uppercase;
+  color: #d6bd73;
+}
+
+.start-screen h1 {
+  font-family: "Caveat", cursive;
+  font-size: clamp(60px, 10vw, 110px);
+  font-weight: 700;
+  color: #f5d879;
+
+  margin: 5px 0 10px;
+
+  text-shadow:
+    0 0 25px rgba(245, 216, 121, 0.15);
+}
+
+.intro {
+  color: #ddd2ae;
+  line-height: 1.8;
+  margin-bottom: 35px;
+}
+
+#startBtn,
+#heartBtn {
+  border: none;
+  outline: none;
+
+  background: #f2d477;
+  color: #302814;
+
+  padding: 15px 35px;
+
+  border-radius: 50px;
+
+  font-family: "Poppins", sans-serif;
+  font-size: 15px;
+  font-weight: 600;
+
+  cursor: pointer;
+
+  box-shadow:
+    0 10px 30px rgba(0, 0, 0, 0.35);
+
+  transition: 0.3s;
+}
+
+#startBtn span {
+  margin-left: 8px;
+  font-size: 20px;
+}
+
+#startBtn:hover,
+#heartBtn:hover {
+  transform: translateY(-5px) scale(1.05);
+
+  box-shadow:
+    0 15px 40px rgba(245, 216, 121, 0.2);
+}
+
+.click-text {
+  margin-top: 15px;
+  font-size: 12px;
+  color: #827c63;
+}
+
+
+/* -------------------------
+   DECORATIONS
+------------------------- */
+
+.decorations {
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  z-index: 0;
+  overflow: hidden;
+}
+
+.decorations span {
+  position: absolute;
+  opacity: 0.25;
+  font-size: 25px;
+  animation: drift 8s ease-in-out infinite;
+}
+
+.decorations span:nth-child(1) {
+  top: 10%;
+  left: 5%;
+}
+
+.decorations span:nth-child(2) {
+  top: 25%;
+  right: 8%;
+}
+
+.decorations span:nth-child(3) {
+  top: 55%;
+  left: 7%;
+}
+
+.decorations span:nth-child(4) {
+  top: 70%;
+  right: 10%;
+}
+
+.decorations span:nth-child(5) {
+  top: 85%;
+  left: 20%;
+}
+
+.decorations span:nth-child(6) {
+  top: 15%;
+  right: 25%;
+}
+
+.decorations span:nth-child(7) {
+  top: 45%;
+  right: 4%;
+}
+
+.decorations span:nth-child(8) {
+  top: 90%;
+  right: 30%;
+}
+
+
+/* -------------------------
+   MAIN PAGE
+------------------------- */
+
+#mainPage {
+  min-height: 100vh;
+  padding-bottom: 100px;
+}
+
+.hidden {
+  display: none !important;
+}
+
+.top-decoration {
+  text-align: center;
+  padding: 35px 10px 10px;
+
+  font-size: 25px;
+  letter-spacing: 8px;
+
+  opacity: 0.7;
+}
+
+
+/* -------------------------
+   LETTER
+------------------------- */
+
+.letter-container {
+  max-width: 820px;
+  margin: 30px auto;
+  padding: 20px;
+}
+
+.paper {
+  position: relative;
+
+  background:
+    linear-gradient(
+      rgba(255, 249, 220, 0.97),
+      rgba(248, 238, 198, 0.97)
+    );
+
+  color: #42361f;
+
+  padding: clamp(35px, 7vw, 75px);
+
+  border-radius: 8px;
+
+  box-shadow:
+    0 30px 70px rgba(0, 0, 0, 0.5);
+
+  transform: rotate(-0.4deg);
+
+  animation: paperAppear 1s ease;
+}
+
+.paper::before {
+  content: "";
+
+  position: absolute;
+  inset: 10px;
+
+  border: 1px dashed rgba(93, 70, 25, 0.25);
+
+  pointer-events: none;
+}
+
+.paper-top {
+  display: flex;
+  justify-content: space-between;
+
+  font-size: 25px;
+
+  margin-bottom: 20px;
+
+  color: #b18a29;
+}
+
+.hello {
+  font-family: "Caveat", cursive;
+  font-size: 32px;
+  color: #9a7420;
+}
+
+.paper h2 {
+  font-family: "Caveat", cursive;
+
+  font-size: clamp(55px, 9vw, 85px);
+
+  color: #5b451b;
+
+  margin-bottom: 10px;
+}
+
+.divider {
+  color: #bd942d;
+
+  text-align: center;
+
+  margin: 20px 0 35px;
+
+  font-size: 13px;
+}
+
+.paper > p {
+  position: relative;
+
+  font-size: 16px;
+  line-height: 2;
+
+  margin: 20px 0;
+}
+
+.highlight {
+  background: rgba(232, 194, 83, 0.25);
+
+  padding: 10px 15px;
+
+  border-left: 4px solid #d1a934;
+
+  border-radius: 4px;
+}
+
+
+/* -------------------------
+   CUTE BOX
+------------------------- */
+
+.cute-box {
+  margin: 30px 0;
+
+  display: flex;
+  align-items: center;
+  gap: 15px;
+
+  padding: 20px;
+
+  background: rgba(215, 177, 65, 0.15);
+
+  border-radius: 15px;
+
+  border: 1px solid rgba(173, 135, 36, 0.3);
+}
+
+.cute-box span {
+  font-size: 30px;
+}
+
+.cute-box p {
+  margin: 0;
+  line-height: 1.8;
+}
+
+
+/* -------------------------
+   FINAL MESSAGE
+------------------------- */
+
+.final-message {
+  margin-top: 45px;
+
+  padding: 30px 20px;
+
+  text-align: center;
+
+  background: rgba(205, 165, 45, 0.12);
+
+  border-radius: 20px;
+}
+
+.flowers {
+  font-size: 25px;
+  margin-bottom: 10px;
+}
+
+.final-message h3 {
+  font-family: "Caveat", cursive;
+
+  font-size: 40px;
+
+  color: #725516;
+}
+
+.final-message p {
+  line-height: 1.8;
+  margin-top: 10px;
+}
+
+.cat-row {
+  margin-top: 20px;
+  font-size: 23px;
+}
+
+.signature {
+  text-align: right;
+
+  margin-top: 40px;
+
+  font-family: "Caveat", cursive;
+
+  font-size: 25px;
+
+  color: #775c20;
+}
+
+.signature span {
+  font-size: 35px;
+}
+
+
+/* -------------------------
+   REASONS
+------------------------- */
+
+.reasons {
+  max-width: 1050px;
+
+  margin: 100px auto;
+
+  padding: 20px;
+}
+
+.section-small {
+  text-align: center;
+
+  color: #c9ae61;
+
+  letter-spacing: 3px;
+
+  text-transform: uppercase;
+
+  font-size: 12px;
+}
+
+.reasons h2 {
+  text-align: center;
+
+  font-family: "Caveat", cursive;
+
+  font-size: clamp(45px, 7vw, 70px);
+
+  color: #f0d273;
+
+  margin: 5px 0 40px;
+}
+
+.cards {
+  display: grid;
+
+  grid-template-columns:
+    repeat(4, 1fr);
+
+  gap: 20px;
+}
+
+.card {
+  padding: 30px 20px;
+
+  text-align: center;
+
+  background: rgba(255, 249, 215, 0.07);
+
+  border: 1px solid rgba(255, 222, 112, 0.12);
+
+  border-radius: 20px;
+
+  backdrop-filter: blur(10px);
+
+  transition: 0.4s;
+}
+
+.card:hover {
+  transform: translateY(-10px);
+
+  background: rgba(255, 249, 215, 0.11);
+
+  border-color: rgba(255, 222, 112, 0.3);
+}
+
+.emoji {
+  font-size: 45px;
+
+  margin-bottom: 15px;
+}
+
+.card h3 {
+  color: #efd275;
+
+  margin-bottom: 10px;
+
+  font-family: "Caveat", cursive;
+
+  font-size: 30px;
+}
+
+.card p {
+  color: #bdb69a;
+
+  font-size: 13px;
+
+  line-height: 1.8;
+}
+
+
+/* -------------------------
+   ENDING
+------------------------- */
+
+.ending {
+  max-width: 700px;
+
+  margin: 100px auto 0;
+
+  padding: 50px 25px;
+
+  text-align: center;
+}
+
+.big-cat {
+  font-size: 75px;
+
+  animation: floatCat 3s ease-in-out infinite;
+}
+
+.ending h2 {
+  font-family: "Caveat", cursive;
+
+  font-size: 60px;
+
+  color: #f1d579;
+
+  margin: 10px 0;
+}
+
+.ending p {
+  color: #c7c0a8;
+
+  line-height: 2;
+
+  max-width: 550px;
+
+  margin: 0 auto;
+}
+
+.sunflower-line {
+  margin: 25px 0;
+
+  font-size: 25px;
+
+  letter-spacing: 5px;
+}
+
+.ending h3 {
+  font-family: "Caveat", cursive;
+
+  color: #fff0b4;
+
+  font-size: 35px;
+
+  margin-bottom: 30px;
+}
+
+.heart-message {
+  margin-top: 25px;
+
+  font-family: "Caveat", cursive;
+
+  font-size: 30px;
+
+  color: #f5d879;
+
+  animation: pop 0.5s ease;
+}
+
+
+/* -------------------------
+   ANIMATIONS
+------------------------- */
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes paperAppear {
+  from {
+    opacity: 0;
+    transform: translateY(30px) rotate(-2deg);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0) rotate(-0.4deg);
+  }
+}
+
+@keyframes floatCat {
+  0%, 100% {
+    transform: translateY(0) rotate(-3deg);
+  }
+
+  50% {
+    transform: translateY(-12px) rotate(3deg);
+  }
+}
+
+@keyframes drift {
+  0%, 100% {
+    transform: translateY(0) rotate(0);
+  }
+
+  50% {
+    transform: translateY(-25px) rotate(10deg);
+  }
+}
+
+@keyframes pop {
+  0% {
+    transform: scale(0.5);
+    opacity: 0;
+  }
+
+  100% {
+    transform: scale(1);
+    opacity: 1;
+  }
+}
+
+
+/* -------------------------
+   MOBILE
+------------------------- */
+
+@media (max-width: 800px) {
+
+  .cards {
+    grid-template-columns:
+      repeat(2, 1fr);
+  }
+
+  .letter-container {
+    padding: 12px;
+  }
+
+  .paper {
+    padding: 35px 25px;
+  }
+
+}
+
+@media (max-width: 520px) {
+
+  .start-screen h1 {
+    font-size: 65px;
+  }
+
+  .cards {
+    grid-template-columns: 1fr;
+  }
+
+  .paper > p {
+    font-size: 14px;
+    line-height: 1.9;
+  }
+
+  .paper h2 {
+    font-size: 60px;
+  }
+
+  .ending h2 {
+    font-size: 50px;
+  }
+
+}
